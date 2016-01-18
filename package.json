@@ -1,0 +1,34 @@
+{
+    "name": "Base16 Designer",
+    "description": "An app for interactively designing Base16 color schemes",
+    "repository": "https://www.github.com/briles/base16designer",
+    "license": "MIT",
+    "copyright": "2016",
+    "author":
+    {
+        "name": "Brian Reilly",
+        "email": "rilesdbrian@gmail.com",
+        "url": "https://www.github.com/briles"
+    },
+    "devDependencies":
+    {
+        "autoprefixer": "*",
+        "grunt": "*",
+        "grunt-browserify": "*",
+        "grunt-contrib-concat": "*",
+        "grunt-contrib-cssmin": "*",
+        "grunt-contrib-htmlmin": "*",
+        "grunt-contrib-jade": "*",
+        "grunt-contrib-uglify": "*",
+        "grunt-contrib-watch": "*",
+        "grunt-csscomb": "*",
+        "grunt-jsonlint": "*",
+        "grunt-postcss": "*",
+        "grunt-sass": "*",
+        "install": "*",
+        "normalize.css": "*"
+    },
+    "dependencies":
+    {
+    }
+}

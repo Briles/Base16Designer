@@ -1,0 +1,157 @@
+.scheme {
+    min-width: 960px;
+}
+
+.scheme-info {
+    position: relative;
+
+    padding: 40px 80px 0;
+    // Scheme Name
+    h1 {
+        padding-bottom: 10px;
+    }
+    // Scheme Author
+    p {
+        min-height: 42px;
+        padding: 0 0 20px 10px;
+    }
+    a {
+        color: $--text-color-lighter;
+    }
+}
+
+// Scheme Color Swatch List
+.swatches-wrapper {
+    position: relative;
+
+    padding-bottom: $swatch-padding-bottom;
+}
+
+.swatches {
+    font-family: $--font-stack-monospace;
+
+    display: block;
+    float: left;
+
+    width: 100%;
+    max-width: $swatches-width;
+
+    list-style-type: none;
+
+    transition: all 140ms linear;
+    // Scheme Color Swatch
+    li {
+        font-size: 13px;
+        line-height: $swatch-height;
+
+        position: relative;
+
+        display: inline-block;
+
+        width: $swatch-width;
+        height: $swatch-height;
+        margin: 0 $swatch-margin $swatch-margin 0;
+
+        cursor: pointer;
+        transition: all 140ms linear;
+        text-align: center;
+        vertical-align: top;
+        text-transform: uppercase;
+        &:nth-child(n+#{$swatches-per-row}) {
+            margin-bottom: 0;
+        }
+        &:nth-child(#{$swatches-per-row}n) {
+            margin-right: 0;
+        }
+        i {
+            position: absolute;
+            top: 0;
+            left: 0;
+
+            display: block;
+
+            width: 100%;
+            height: 100%;
+            padding: (($swatch-height - 24px) / 2) (($swatch-width - 24px) / 2);
+
+            opacity: 0;
+            color: $white;
+            background-color: fade-out($black, .45);
+        }
+        &:hover {
+            i {
+                opacity: 1;
+            }
+        }
+    }
+}
+
+//// Menu for changing the current scheme
+
+// Toggles the visibility of the scheme-switcher
+.scheme-switch-toggle {
+    $height: $swatch-height * 2 + $swatch-margin;
+
+    line-height: $height;
+
+    float: left;
+
+    width: $swatch-width;
+    height: $height;
+    margin-right: $swatch-margin * 2;
+
+    cursor: pointer;
+    transition: all 140ms linear;
+    text-align: center;
+
+    color: $--text-color-inactive;
+    border: $--border;
+    &:hover {
+        color: $--text-color-lighter;
+        background-color: $--background-color;
+    }
+}
+
+.scheme-switcher {
+    display: block;
+
+    width: 100%;
+    padding: 20px 40px;
+
+    list-style-type: none;
+
+    background-color: hsl(0, 0%, 99%);
+    box-shadow: 0 1px 2px 1px hsla(0, 0%, 0%, .09);
+    li {
+        font-size: 13px;
+        font-weight: bold;
+
+        float: left;
+
+        margin: 0 11px 11px 0;
+        padding: 3px 12px;
+
+        cursor: pointer;
+
+        background: #eee;
+        &:hover {
+            background: #ddd;
+        }
+    }
+}
+
+// Syntax Highlighted Color Scheme Preview
+.scheme-preview {
+    font-size: 14px;
+
+    display: block;
+    overflow: auto;
+
+    width: 100%;
+    min-height: 737px;  // prevent the page from jumping when setting code font-size
+    padding: 40px 80px 60px;
+
+    white-space: pre;
+    word-spacing: normal;
+    word-break: normal;
+}

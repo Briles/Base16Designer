@@ -1,0 +1,34 @@
+// Base Colors
+$black: #000;
+$white: #fff;
+
+//// Brand Variables
+
+// Fonts
+$--font-stack: 'Source Sans Pro', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+$--font-stack-monospace: Hack, menlo, consolas, monospace;
+
+// Brand Colors
+$--text-color: hsl(0, 0%, 20%);
+$--text-color-lighter: hsl(0, 0%, 47%);
+$--text-color-inactive: hsl(0, 0%, 73%);
+$--border-color: hsl(0, 0%, 89%);
+$--background-color: hsl(0, 0%, 96%);
+
+// Brand Styles
+$--border: 1px solid $--border-color;
+
+
+//// Component Variables
+
+// scheme > swatches
+$swatches-per-row: 8;
+$swatch-height: 48px;
+$swatch-width: 48px;
+$swatch-margin: 12px;
+$swatch-padding-bottom: 24px;
+$swatches-width: $swatches-per-row * $swatch-width + ($swatches-per-row - 1) * $swatch-margin;
+
+// tabs > li
+$tab-margin: 10px;
+$tab-width: ($swatches-width - $tab-margin) / 2;

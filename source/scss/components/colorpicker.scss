@@ -1,0 +1,95 @@
+.colorpicker-wrapper {
+    position: absolute;
+    top: 0;
+    left: 560px;
+
+    display: block;
+
+    width: 100%;
+    max-width: 320px;
+}
+
+.colorpicker {
+    font-family: $--font-stack-monospace;
+
+    position: relative;
+
+    padding: 20px;
+
+    background-color: $white;
+    box-shadow: 0 1px 2px 1px hsla(0, 0%, 0%, .09);
+}
+
+.colorpicker-head {
+    font-weight: bold;
+
+    position: relative;
+
+    padding: 0 80px 20px 5px;
+
+    text-transform: uppercase;
+}
+
+.colorpicker-swatch {
+    display: block;
+
+    width: 100%;
+    height: 24px;
+
+    text-align: center;
+}
+
+.colorpicker-close {
+    position: absolute;
+    top: 0;
+    right: 0;
+
+    cursor: pointer;
+}
+
+.colorpicker-fieldset {
+    display: table;
+
+    width: 100%;
+    margin-bottom: 15px;
+    padding-bottom: 6px;
+    &:last-of-type {
+        margin-bottom: 0;
+    }
+}
+
+.colorpicker-field {
+    display: table-cell;
+
+    padding: 0 5px;
+
+    text-align: center;
+    vertical-align: top;
+    label {
+        font-size: 12px;
+    }
+    input {
+        font-size: 14px;
+        line-height: 30px;
+
+        display: block;
+
+        width: 100%;
+
+        text-align: center;
+        text-transform: uppercase;
+
+        border: $--border;
+        outline: none;
+
+        -moz-appearance: textfield;
+        &::-webkit-inner-spin-button, &::-webkit-outer-spin-button {
+            margin: 0;
+
+            -webkit-appearance: none;
+        }
+        &.ng-invalid {
+            color: #f00;
+        }
+    }
+}
