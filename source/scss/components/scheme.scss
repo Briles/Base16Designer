@@ -151,6 +151,7 @@
     min-height: 737px;  // prevent the page from jumping when setting code font-size
     padding: 40px 80px 60px;
 
+    transition: all 140ms linear;
     white-space: pre;
     word-spacing: normal;
     word-break: normal;
