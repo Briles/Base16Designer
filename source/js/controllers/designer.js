@@ -1,6 +1,6 @@
 module.exports = function($scope)
 {
-    var constants = require('../constants.js');
+    const constants = require('../constants.js');
     $scope.BASE16_SCHEMES = constants.BASE16_SCHEMES;
     $scope.COLOR_MAP = constants.COLOR_MAP;
     $scope.COMMENT_MAP = constants.COMMENT_MAP;
