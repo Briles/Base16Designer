@@ -155,4 +155,7 @@
     white-space: pre;
     word-spacing: normal;
     word-break: normal;
+    span {
+        transition: all 140ms linear;
+    }
 }
