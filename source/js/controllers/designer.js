@@ -147,14 +147,14 @@ module.exports = function($scope)
         {
             colorpicker.colors.rgb = hexcolor.toRgbObject();
             colorpicker.colors.hsl = hexcolor.toHslObject();
-            colorpicker.colors.hsv = hslcolor.toHsvObject();
+            colorpicker.colors.hsv = hexcolor.toHsvObject();
         }
 
         if (format === 'rgb' && rgbcolorisValid)
         {
             colorpicker.colors.hex = rgbcolor.toHex();
             colorpicker.colors.hsl = rgbcolor.toHslObject();
-            colorpicker.colors.hsv = hslcolor.toHsvObject();
+            colorpicker.colors.hsv = rgbcolor.toHsvObject();
         }
 
         if (format === 'hsl' && hslcolorisValid)
