@@ -1,5 +1,6 @@
 module.exports = function($scope)
 {
+    require('../helpers.js');
     const constants = require('../constants.js');
     $scope.BASE16_SCHEMES = constants.BASE16_SCHEMES;
     $scope.COLOR_MAP = constants.COLOR_MAP;
@@ -14,7 +15,7 @@ module.exports = function($scope)
     // Updates the workspace in localStorage
     designer.updateStorage = function()
     {
-        console.log('Saving Workspace to local storage');
+        // console.log('Saving Workspace to local storage');
         lStore.setItem('workspace', angular.toJson($scope.workspace));
     };
 
@@ -42,7 +43,7 @@ module.exports = function($scope)
 
         if ($scope.workspace.scheme !== schemeName)
         {
-            console.log('Setting "Workspace" Scheme to "' + schemeName + '"');
+            // console.log('Setting "Workspace" Scheme to "' + schemeName + '"');
             $scope.workspace.scheme = designer.getBase16Scheme(schemeName);
             designer.updateStorage();
             return $scope.workspace.scheme;
@@ -84,102 +85,77 @@ module.exports = function($scope)
     };
     $scope.colorpicker = colorpicker;
 
+    tinycolor.prototype.toHslObject = function()
+    {
+        var hsl = this.toHsl();
+        return {h : hsl.h.round(0), s: (hsl.s * 100).round(0), l: (hsl.l * 100).round(0)};
+    };
+
+    tinycolor.prototype.toHsvObject = function()
+    {
+        var hsv = this.toHsv();
+        return {h : hsv.h.round(0), s: (hsv.s * 100).round(0), v: (hsv.v * 100).round(0)};
+    };
+
     colorpicker.populatePicker = function(color, caller)
     {
         var colors = $scope.colorpicker.colors;
 
         colorpicker.caller = caller;
-        colors.tinycolor = new colr().fromHex(color);
-        colors.hex = colors.tinycolor.toHex();
-        colors.rgb = colors.tinycolor.toRgbObject();
+        colors.tinycolor = tinycolor(color);
+        colors.hex = colors.tinycolor.toHexString();
+        colors.rgb = colors.tinycolor.toRgb();
         colors.hsl = colors.tinycolor.toHslObject();
         colors.hsv = colors.tinycolor.toHsvObject();
     };
 
-    colorpicker.updateColor = function(format, themeid)
+    colorpicker.updateColor = function(format)
     {
-        var hexcolor = null,
-            rgbcolor = null,
-            hslcolor = null,
-            hsvcolor = null,
-            hexcolorisValid = true,
-            rgbcolorisValid = true,
-            hslcolorisValid = true,
-            hsvcolorisValid = true;
+        var tinycolors = {
+            hex: tinycolor(colorpicker.colors.hex),
+            rgb: tinycolor(colorpicker.colors.rgb),
+            hsl: tinycolor(colorpicker.colors.hsl),
+            hsv: tinycolor(colorpicker.colors.hsv),
+        };
+        var color = tinycolors[format];
+        console.log(color.isValid());
+        if (color.isValid()) {
 
-        try
-        {
-            hexcolor = new colr().fromHex(colorpicker.colors.hex);
-        }
-        catch (e)
-        {
-            hexcolorisValid = false;
-        }
-
-        try
-        {
-            rgbcolor = new colr().fromRgbObject(colorpicker.colors.rgb);
-        }
-        catch (e)
-        {
-            rgbcolorisValid = false;
-        }
-
-        try
-        {
-            hslcolor = new colr().fromHslObject(colorpicker.colors.hsl);
-        }
-        catch (e)
-        {
-            hslcolorisValid = false;
-        }
-
-        try
-        {
-            hsvcolor = new colr().fromHsvObject(colorpicker.colors.hsv);
-        }
-        catch (e)
-        {
-            hsvcolorisValid = false;
-        }
-
-        if (format === 'hex' && hexcolorisValid)
-        {
-            colorpicker.colors.rgb = hexcolor.toRgbObject();
-            colorpicker.colors.hsl = hexcolor.toHslObject();
-            colorpicker.colors.hsv = hexcolor.toHsvObject();
-        }
-
-        if (format === 'rgb' && rgbcolorisValid)
-        {
-            colorpicker.colors.hex = rgbcolor.toHex();
-            colorpicker.colors.hsl = rgbcolor.toHslObject();
-            colorpicker.colors.hsv = rgbcolor.toHsvObject();
-        }
-
-        if (format === 'hsl' && hslcolorisValid)
-        {
-            colorpicker.colors.hex = hslcolor.toHex();
-            colorpicker.colors.rgb = hslcolor.toRgbObject();
-            colorpicker.colors.hsv = hslcolor.toHsvObject();
-        }
-
-        if (format === 'hsv' && hsvcolorisValid)
-        {
-            colorpicker.colors.hex = hsvcolor.toHex();
-            colorpicker.colors.rgb = hsvcolor.toRgbObject();
-            colorpicker.colors.hsl = hsvcolor.toHslObject();
-        }
-
-        if (colorpicker.caller !== null)
-        {
-            if (hexcolorisValid && rgbcolorisValid && hexcolorisValid && hsvcolorisValid)
+            if (format === 'hex')
             {
-                $scope.workspace.scheme[colorpicker.caller] = hexcolor.toHex().substring(1);
+                colorpicker.colors.rgb = color.toRgb();
+                colorpicker.colors.hsl = color.toHslObject();
+                colorpicker.colors.hsv = color.toHsvObject();
+            }
+
+            if (format === 'rgb')
+            {
+                colorpicker.colors.hex = color.toHexString();
+                colorpicker.colors.hsl = color.toHslObject();
+                colorpicker.colors.hsv = color.toHsvObject();
+            }
+
+            if (format === 'hsl')
+            {
+                colorpicker.colors.hex = color.toHexString();
+                colorpicker.colors.rgb = color.toRgb();
+                colorpicker.colors.hsv = color.toHsvObject();
+            }
+
+            if (format === 'hsv')
+            {
+                colorpicker.colors.hex = color.toHexString();
+                colorpicker.colors.rgb = color.toRgb();
+                colorpicker.colors.hsl = color.toHslObject();
+            }
+
+            if (colorpicker.caller !== null)
+            {
+                $scope.workspace.scheme[colorpicker.caller] = color.toHex();
                 designer.updateStorage();
+                console.log(colorpicker.colors);
             }
         }
-        console.log(colorpicker.colors);
     };
 
     $scope.copySuccess = function(e)

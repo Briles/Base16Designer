@@ -113,7 +113,7 @@ module.exports = function(grunt)
                 },
                 files:
                 {
-                    'main.min.js': ['source/js/lib/colr.min.js','source/js/lib/ngclipboard.min.js', 'main.min.js'],
+                    'main.min.js': ['source/js/lib/ngclipboard.min.js', 'main.min.js'],
                 },
             },
         },
