@@ -15,16 +15,9 @@ module.exports = function($scope)
     // Updates the workspace in localStorage
     designer.updateStorage = function()
     {
-        // console.log('Saving Workspace to local storage');
+        console.log('Saving Workspace to local storage');
         lStore.setItem('workspace', angular.toJson($scope.workspace));
     };
-
-    // Deletes everything in localStorage
-    // designer.clearStorage = function()
-    // {
-    //     $scope.workspace = {};
-    //     designer.updateStorage();
-    // };
 
     designer.getBase16Scheme = function(schemeName)
     {
@@ -43,7 +36,7 @@ module.exports = function($scope)
 
         if ($scope.workspace.scheme !== schemeName)
         {
-            // console.log('Setting "Workspace" Scheme to "' + schemeName + '"');
+            console.log('Setting "Workspace" Scheme to "' + schemeName + '"');
             $scope.workspace.scheme = designer.getBase16Scheme(schemeName);
             designer.updateStorage();
             return $scope.workspace.scheme;
