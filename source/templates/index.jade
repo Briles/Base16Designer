@@ -41,7 +41,7 @@ html(ng-app="Base16Designer", ng-controller="designerCtrl")
                 i.material-icons &#xE3B7;
               ul.swatches
                 each hex in hexcodes
-                  li(style="background-color: #\{{scheme.base#{hex}}}; color: #\{{(COLOR_MAP.base#{hex} === undefined ? scheme.base07 : scheme[COLOR_MAP.base#{hex}])}};", ng-click="colorpicker.isActive = true;designer.updateStorage();colorpicker.populatePicker(scheme.base#{hex}, 'base#{hex}');")= hex
+                  li(style="background-color: #\{{workspace.scheme.base#{hex}}}; color: #\{{(COLOR_MAP.base#{hex} === undefined ? workspace.scheme.base07 : workspace.scheme[COLOR_MAP.base#{hex}])}};", ng-click="colorpicker.isActive = true;designer.updateStorage();colorpicker.populatePicker(workspace.scheme.base#{hex}, 'base#{hex}');")= hex
                     i.material-icons &#xE3B8;
               .colorpicker-wrapper(ng-if="colorpicker.isActive === true")
                 .colorpicker
@@ -83,8 +83,8 @@ html(ng-app="Base16Designer", ng-controller="designerCtrl")
                       label(for="colorpicker-hsv-v") V
             //- tabs for switching dark/light schemes + toolbar
             ul.tabs.clearfix
-              li(aria-label="View dark scheme", style="background-color: #\{{scheme.base00}}; color: #\{{scheme.base05}};", ng-click="state.view = 'dark';designer.updateStorage();") Dark
-              li(aria-label="View light scheme", style="background-color: #\{{scheme.base07}}; color: #\{{scheme.base02}};", ng-click="state.view = 'light';designer.updateStorage();") Light
+              li(aria-label="View dark scheme", style="background-color: #\{{workspace.scheme.base00}}; color: #\{{workspace.scheme.base05}};", ng-click="state.view = 'dark';designer.updateStorage();") Dark
+              li(aria-label="View light scheme", style="background-color: #\{{workspace.scheme.base07}}; color: #\{{workspace.scheme.base02}};", ng-click="state.view = 'light';designer.updateStorage();") Light
               //- li.command.tooltipped.tooltipped-n(aria-label="Delete Scheme and state", ng-click="designer.clearStorage();")
               //-   i.material-icons &#xE872;
               li.command.tooltipped.tooltipped-n(aria-label="Code Focus")
@@ -101,127 +101,127 @@ html(ng-app="Base16Designer", ng-controller="designerCtrl")
               li.command.tooltipped.tooltipped-n(aria-label="Toggle Bold Font", ng-click="designer.setFontWeight()", ng-class="{active: state.fontWeight === 'bold' ? true : false}")
                 i.material-icons &#xE238;
           //- scheme-preview
-          pre.scheme-preview#code(ng-style="{'background-color': '#' + (state.view === 'dark' ? scheme.base00 : scheme.base07), 'color': '#' + (state.view === 'dark' ? scheme.base05 : scheme.base02), 'font-weight': state.fontWeight, 'font-style': state.fontStyle, 'font-size': state.fontSize+'px'}")
+          pre.scheme-preview#code(ng-style="{'background-color': '#' + (state.view === 'dark' ? workspace.scheme.base00 : workspace.scheme.base07), 'color': '#' + (state.view === 'dark' ? workspace.scheme.base05 : workspace.scheme.base02), 'font-weight': state.fontWeight, 'font-style': state.fontStyle, 'font-size': state.fontSize+'px'}")
             code
-              span(style="color: #\{{scheme.base0E}};") require&nbsp;
-              span(style="color: #\{{scheme.base0B}};") "gem"
+              span(style="color: #\{{workspace.scheme.base0E}};") require&nbsp;
+              span(style="color: #\{{workspace.scheme.base0B}};") "gem"
               = "\n\n"
-              span(style="color: #\{{scheme.base08}};") string
+              span(style="color: #\{{workspace.scheme.base08}};") string
               |&nbsp;=&nbsp;
-              span(style="color: #\{{scheme.base0B}};") "base16"
+              span(style="color: #\{{workspace.scheme.base0B}};") "base16"
               = "\n"
-              span(style="color: #\{{scheme.base08}};") symbol
+              span(style="color: #\{{workspace.scheme.base08}};") symbol
               |&nbsp;=&nbsp;
-              span(style="color: #\{{scheme.base0B}};") :base16
+              span(style="color: #\{{workspace.scheme.base0B}};") :base16
               = "\n"
-              span(style="color: #\{{scheme.base08}};") fixnum
+              span(style="color: #\{{workspace.scheme.base08}};") fixnum
               |&nbsp;=&nbsp;
-              span(style="color: #\{{scheme.base09}};") 0
+              span(style="color: #\{{workspace.scheme.base09}};") 0
               = "\n"
-              span(style="color: #\{{scheme.base08}};") float
+              span(style="color: #\{{workspace.scheme.base08}};") float
               |&nbsp;&nbsp;=&nbsp;
-              span(style="color: #\{{scheme.base09}};") 0.00
+              span(style="color: #\{{workspace.scheme.base09}};") 0.00
               = "\n"
-              span(style="color: #\{{scheme.base08}};") array
+              span(style="color: #\{{workspace.scheme.base08}};") array
               |&nbsp;&nbsp;=&nbsp;
-              span(style="color: #\{{scheme.base0A}};") Array
+              span(style="color: #\{{workspace.scheme.base0A}};") Array
               | .
-              span(style="color: #\{{scheme.base0D}};") new
+              span(style="color: #\{{workspace.scheme.base0D}};") new
               = "\n"
-              span(style="color: #\{{scheme.base08}};") array
+              span(style="color: #\{{workspace.scheme.base08}};") array
               |&nbsp;&nbsp;=&nbsp;[
-              span(style="color: #\{{scheme.base0B}};") "chris"
+              span(style="color: #\{{workspace.scheme.base0B}};") "chris"
               | ,&nbsp;
-              span(style="color: #\{{scheme.base09}};") 85
+              span(style="color: #\{{workspace.scheme.base09}};") 85
               | ]
               = "\n"
-              span(style="color: #\{{scheme.base08}};") hash
+              span(style="color: #\{{workspace.scheme.base08}};") hash
               |&nbsp;&nbsp;&nbsp;=&nbsp;{
-              span(style="color: #\{{scheme.base0B}};") "test"
+              span(style="color: #\{{workspace.scheme.base0B}};") "test"
               |&nbsp;=&#62;&nbsp;
-              span(style="color: #\{{scheme.base0B}};") "test"
+              span(style="color: #\{{workspace.scheme.base0B}};") "test"
               | }
               = "\n"
-              span(style="color: #\{{scheme.base08}};") regexp
+              span(style="color: #\{{workspace.scheme.base08}};") regexp
               |&nbsp;=&nbsp;
-              span(style="color: #\{{scheme.base0C}};") /[abc]/
+              span(style="color: #\{{workspace.scheme.base0C}};") /[abc]/
               = "\n\n"
-              span(style="color: #\{{scheme.base03}};") # This is a comment
+              span(style="color: #\{{workspace.scheme.base03}};") # This is a comment
               = "\n"
-              span(style="color: #\{{scheme.base0E}};") class&nbsp;
-              span(style="color: #\{{scheme.base0A}};") Person
+              span(style="color: #\{{workspace.scheme.base0E}};") class&nbsp;
+              span(style="color: #\{{workspace.scheme.base0A}};") Person
               = "\n\n  "
-              span(style="color: #\{{scheme.base0D}};") attr_accessor&nbsp;
-              span(style="color: #\{{scheme.base0B}};") :name
+              span(style="color: #\{{workspace.scheme.base0D}};") attr_accessor&nbsp;
+              span(style="color: #\{{workspace.scheme.base0B}};") :name
               = "\n\n  "
-              span(style="color: #\{{scheme.base0E}};") def&nbsp;
-              span(style="color: #\{{scheme.base0D}};") initialize
+              span(style="color: #\{{workspace.scheme.base0E}};") def&nbsp;
+              span(style="color: #\{{workspace.scheme.base0D}};") initialize
               | (
-              span(style="color: #\{{scheme.base08}};") attributes
+              span(style="color: #\{{workspace.scheme.base08}};") attributes
               =" = {})\n    "
-              span(style="color: #\{{scheme.base08}};") @name
+              span(style="color: #\{{workspace.scheme.base08}};") @name
               |&nbsp;=&nbsp;
-              span(style="color: #\{{scheme.base08}};") attributes
+              span(style="color: #\{{workspace.scheme.base08}};") attributes
               | [
-              span(style="color: #\{{scheme.base0B}};") :name
+              span(style="color: #\{{workspace.scheme.base0B}};") :name
               ="]\n  "
-              span(style="color: #\{{scheme.base0E}};") end
+              span(style="color: #\{{workspace.scheme.base0E}};") end
               = "\n\n  "
-              span(style="color: #\{{scheme.base0E}};") def&nbsp;
-              span(style="color: #\{{scheme.base0E}};") self
+              span(style="color: #\{{workspace.scheme.base0E}};") def&nbsp;
+              span(style="color: #\{{workspace.scheme.base0E}};") self
               | .
-              span(style="color: #\{{scheme.base0D}};") greet
+              span(style="color: #\{{workspace.scheme.base0D}};") greet
               = "\n    "
-              span(ng-style="{'background-color': '#' + (state.view === 'dark' ? scheme.base02 : scheme.base06), 'color': '#' + scheme.base0B}") "hello"
+              span(ng-style="{'background-color': '#' + (state.view === 'dark' ? workspace.scheme.base02 : workspace.scheme.base06), 'color': '#' + workspace.scheme.base0B}") "hello"
               = "\n  "
-              span(style="color: #\{{scheme.base0E}};") end
+              span(style="color: #\{{workspace.scheme.base0E}};") end
               = "\n"
-              span(style="color: #\{{scheme.base0E}};") end
+              span(style="color: #\{{workspace.scheme.base0E}};") end
               = "\n\n"
-              span(style="color: #\{{scheme.base08}};") person1
+              span(style="color: #\{{workspace.scheme.base08}};") person1
               |&nbsp;=&nbsp;
-              span(style="color: #\{{scheme.base0A}};") Person
+              span(style="color: #\{{workspace.scheme.base0A}};") Person
               | .
-              span(style="color: #\{{scheme.base0D}};") new
+              span(style="color: #\{{workspace.scheme.base0D}};") new
               | (
-              span(style="color: #\{{scheme.base0B}};") :name
+              span(style="color: #\{{workspace.scheme.base0B}};") :name
               | &nbsp;=&#62;&nbsp;
-              span(style="color: #\{{scheme.base0B}};") "Chris"
+              span(style="color: #\{workspace.scheme.base0B}};") "Chris"
               ="\)\n"
-              span(style="color: #\{{scheme.base0D}};") print&nbsp;
-              span(style="color: #\{{scheme.base0A}};") Person
+              span(style="color: #\{{workspace.scheme.base0D}};") print&nbsp;
+              span(style="color: #\{{workspace.scheme.base0A}};") Person
               | ::
-              span(style="color: #\{{scheme.base0D}};") greet
+              span(style="color: #\{{workspace.scheme.base0D}};") greet
               | ,&nbsp;
-              span(style="color: #\{{scheme.base0B}};") " "
+              span(style="color: #\{{workspace.scheme.base0B}};") " "
               | ,&nbsp;
-              span(style="color: #\{{scheme.base08}};") person1
+              span(style="color: #\{{workspace.scheme.base08}};") person1
               | .
-              span(style="color: #\{{scheme.base0D}};") name
+              span(style="color: #\{{workspace.scheme.base0D}};") name
               | ,
-              span(style="color: #\{{scheme.base0B}};")
+              span(style="color: #\{{workspace.scheme.base0B}};")
                 |&nbsp;"
-                span(style="color: #\{{scheme.base09}};") \n
+                span(style="color: #\{{workspace.scheme.base09}};") \n
                 ="\"\n"
-              span(style="color: #\{{scheme.base0D}};") puts&nbsp;
-              span(style="color: #\{{scheme.base0B}};") "another&nbsp;
-              span(style="color: #\{{scheme.base0F}};") \#{
-              span(style="color: #\{{scheme.base0A}};") Person
+              span(style="color: #\{{workspace.scheme.base0D}};") puts&nbsp;
+              span(style="color: #\{{workspace.scheme.base0B}};") "another&nbsp;
+              span(style="color: #\{{workspace.scheme.base0F}};") \#{
+              span(style="color: #\{{workspace.scheme.base0A}};") Person
               | ::
-              span(style="color: #\{{scheme.base0D}};") greet
-              span(style="color: #\{{scheme.base0F}};") }&nbsp;
-              span(style="color: #\{{scheme.base0F}};") \#{
-              span(style="color: #\{{scheme.base08}};") person1
+              span(style="color: #\{{workspace.scheme.base0D}};") greet
+              span(style="color: #\{{workspace.scheme.base0F}};") }&nbsp;
+              span(style="color: #\{{workspace.scheme.base0F}};") \#{
+              span(style="color: #\{{workspace.scheme.base08}};") person1
               | .
-              span(style="color: #\{{scheme.base0D}};") name
-              span(style="color: #\{{scheme.base0F}};") }
-              span(style="color: #\{{scheme.base0B}};") "
+              span(style="color: #\{{workspace.scheme.base0D}};") name
+              span(style="color: #\{{workspace.scheme.base0F}};") }
+              span(style="color: #\{{workspace.scheme.base0B}};") "
               span="\n\n\n"
               code#yaml()
-                span(style="color: #\{{scheme.base03}};") # {{scheme.scheme}} scheme for the Base16 Builder (
-                  a(href="https://github.com/chriskempson/base16-builder", target="_blank", style="color: #\{{scheme.base03}};") https://github.com/chriskempson/base16-builder
+                span(style="color: #\{{workspace.scheme.base03}};") # {{workspace.scheme.scheme}} scheme for the Base16 Builder (
+                  a(href="https://github.com/chriskempson/base16-builder", target="_blank", style="color: #\{{workspace.scheme.base03}};") https://github.com/chriskempson/base16-builder
                   |);&#10;
-                span(ng-repeat-start="(prop, value) in scheme", style="color: #\{{scheme.base08}};") {{prop}}:&nbsp;
-                span(style="color: #\{{scheme.base0B}};") "{{value}}"
-                span(ng-repeat-end, style="color: #\{{scheme.base03}};") {{COMMENT_MAP[prop]}}&#10;
+                span(ng-repeat-start="(prop, value) in scheme", style="color: #\{{workspace.scheme.base08}};") {{prop}}:&nbsp;
+                span(style="color: #\{{workspace.scheme.base0B}};") "{{value}}"
+                span(ng-repeat-end, style="color: #\{{workspace.scheme.base03}};") {{COMMENT_MAP[prop]}}&#10;
 

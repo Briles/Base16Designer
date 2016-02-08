@@ -44,7 +44,6 @@ module.exports = function($scope)
         {
             console.log('Setting "Workspace" Scheme to "' + schemeName + '"');
             $scope.workspace.scheme = designer.getBase16Scheme(schemeName);
-            $scope.scheme = $scope.workspace.scheme;
             designer.updateStorage();
             return $scope.workspace.scheme;
         }
@@ -74,7 +73,7 @@ module.exports = function($scope)
     };
     $scope.workspace.state = $scope.state;
 
-    $scope.scheme = $scope.workspace.scheme || designer.setScheme('Default');
+    $scope.workspace.scheme = $scope.workspace.scheme || designer.setScheme('Default');
 
     // Colorpicker
     var colorpicker = {
@@ -176,7 +175,7 @@ module.exports = function($scope)
         {
             if (hexcolorisValid && rgbcolorisValid && hexcolorisValid && hsvcolorisValid)
             {
-                $scope.scheme[colorpicker.caller] = hexcolor.toHex().substring(1);
+                $scope.workspace.scheme[colorpicker.caller] = hexcolor.toHex().substring(1);
                 designer.updateStorage();
             }
         }
