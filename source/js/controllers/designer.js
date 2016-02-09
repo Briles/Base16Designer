@@ -53,6 +53,12 @@ module.exports = function ($scope) {
   designer.setScheme = function (schemeName) {
     console.log('Setting "Workspace" Scheme to "' + schemeName + '"');
     $scope.workspace.scheme = designer.getBase16Scheme(schemeName);
+    if (colorpicker) {
+      var caller = colorpicker.caller;
+      var color = $scope.workspace.scheme[caller];
+      colorpicker.populatePicker(color, caller);
+    }
+
     designer.updateStorage();
     return $scope.workspace.scheme;
   };
@@ -107,6 +113,7 @@ module.exports = function ($scope) {
   };
 
   colorpicker.populatePicker = function (color, caller) {
+    var color = color || $scope.workspace.scheme[caller];
     var colors = $scope.colorpicker.colors;
 
     colorpicker.caller = caller;
