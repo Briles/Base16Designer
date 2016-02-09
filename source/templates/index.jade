@@ -85,8 +85,8 @@ html(ng-app="Base16Designer", ng-controller="designerCtrl")
             ul.tabs.clearfix
               li(aria-label="View dark scheme", style="background-color: #\{{workspace.scheme.base00}}; color: #\{{workspace.scheme.base05}};", ng-click="state.view = 'dark';designer.updateStorage();") Dark
               li(aria-label="View light scheme", style="background-color: #\{{workspace.scheme.base07}}; color: #\{{workspace.scheme.base02}};", ng-click="state.view = 'light';designer.updateStorage();") Light
-              //- li.command.tooltipped.tooltipped-n(aria-label="Delete Scheme and state", ng-click="designer.clearStorage();")
-              //-   i.material-icons &#xE872;
+              li.command.tooltipped.tooltipped-n(aria-label="Reset Scheme Colors", ng-click="designer.clearStorage();")
+                i.material-icons &#xE872;
               li.command.tooltipped.tooltipped-n(aria-label="Code Focus")
                 a(href="#code")
                   i.material-icons &#xE8F4;

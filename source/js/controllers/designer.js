@@ -18,6 +18,13 @@ module.exports = function ($scope) {
     lStore.setItem('workspace', angular.toJson($scope.workspace));
   };
 
+  // Clears the workspace in localStorage
+  designer.clearStorage = function () {
+    console.log('Clearing workspace');
+    var currentScheme = $scope.workspace.scheme.scheme;
+    $scope.workspace.scheme = designer.setScheme(currentScheme);
+  };
+
   designer.getBase16Scheme = function (schemeName) {
     var fetchedScheme;
     for (var i = $scope.BASE16_SCHEMES.length - 1; i >= 0; i--) {
