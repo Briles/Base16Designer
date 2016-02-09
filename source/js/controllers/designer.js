@@ -26,17 +26,35 @@ module.exports = function ($scope) {
       if (fetchedScheme.scheme === schemeName) break;
     }
 
-    return fetchedScheme;
+    var clonedScheme = {
+      scheme: fetchedScheme.scheme,
+      author: fetchedScheme.author,
+      base00: fetchedScheme.base00,
+      base01: fetchedScheme.base01,
+      base02: fetchedScheme.base02,
+      base03: fetchedScheme.base03,
+      base04: fetchedScheme.base04,
+      base05: fetchedScheme.base05,
+      base06: fetchedScheme.base06,
+      base07: fetchedScheme.base07,
+      base08: fetchedScheme.base08,
+      base09: fetchedScheme.base09,
+      base0A: fetchedScheme.base0A,
+      base0B: fetchedScheme.base0B,
+      base0C: fetchedScheme.base0C,
+      base0D: fetchedScheme.base0D,
+      base0E: fetchedScheme.base0E,
+      base0F: fetchedScheme.base0F,
+    };
+
+    return clonedScheme;
   };
 
   designer.setScheme = function (schemeName) {
-
-    if ($scope.workspace.scheme !== schemeName) {
-      console.log('Setting "Workspace" Scheme to "' + schemeName + '"');
-      $scope.workspace.scheme = designer.getBase16Scheme(schemeName);
-      designer.updateStorage();
-      return $scope.workspace.scheme;
-    }
+    console.log('Setting "Workspace" Scheme to "' + schemeName + '"');
+    $scope.workspace.scheme = designer.getBase16Scheme(schemeName);
+    designer.updateStorage();
+    return $scope.workspace.scheme;
   };
 
   designer.setFontStyle = function () {
