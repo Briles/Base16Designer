@@ -33,7 +33,7 @@ module.exports = function ($scope) {
       if (fetchedScheme.scheme === schemeName) break;
     }
 
-    var clonedScheme = {
+    return {
       scheme: fetchedScheme.scheme,
       author: fetchedScheme.author,
       base00: fetchedScheme.base00,
@@ -53,8 +53,6 @@ module.exports = function ($scope) {
       base0E: fetchedScheme.base0E,
       base0F: fetchedScheme.base0F,
     };
-
-    return clonedScheme;
   };
 
   designer.setScheme = function (schemeName) {
