@@ -32,8 +32,8 @@ html(ng-app="Base16Designer", ng-controller="designerCtrl")
           ul.scheme-switcher.clearfix(ng-if="state.schemeListIsActive === true")
             li(ng-repeat="scheme in BASE16_SCHEMES", ng-click="designer.setScheme(scheme.scheme)") {{scheme.scheme}}
           .scheme-info
-            h1 {{scheme.scheme}}
-            p(ng-bind-html="scheme.author | linky")
+            h1 {{workspace.scheme.scheme}}
+            p(ng-bind-html="workspace.scheme.author | linky")
             .swatches-wrapper.clearfix
               .scheme-switch-toggle.tooltipped.tooltipped-ne(aria-label="Select a Base16 Scheme", ng-click="state.schemeListIsActive = state.schemeListIsActive === true ? false : true;designer.updateStorage();")
                 i.material-icons &#xE3B7;
