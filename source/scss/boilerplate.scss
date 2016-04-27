@@ -1,72 +1,63 @@
 *, &::before, *::after {
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 html {
-    height: 100%;
+  height: 100%;
 }
 
 body {
-    font: normal normal 400 100% / 1.375 $--font-stack;
+  font: normal normal 400 100% / 1.375 $--font-stack;
 
-    height: 100%;
+  height: 100%;
 
-    text-rendering: optimizeLegibility;
+  text-rendering: optimizeLegibility;
 
-    color: $--text-color;
-    background: $white;
+  color: $--text-color;
+  background: $white;
 
-    -webkit-font-smoothing: antialiased;
+  -webkit-font-smoothing: antialiased;
 }
 
 h1, h2, h3 {
-    margin: 0;
+  margin: 0;
 }
 
 ul, ol {
-    margin: 0;
-    padding: 0;
+  margin: 0;
+  padding: 0;
 }
 
 p {
-    margin: 0;
+  margin: 0;
 }
 
 pre, code {
-    font-family: $--font-stack-monospace;
+  font-family: $--font-stack-monospace;
 
-    margin: 0;
+  margin: 0;
+
+  white-space: pre-line;
 }
 
 fieldset {
-    margin: 0;
-    padding: 0;
+  margin: 0;
+  padding: 0;
 
-    border: 0;
+  border: 0;
 }
 
 i {
-    vertical-align: middle;
+  vertical-align: middle;
 }
 
 // Contain those floats
 .clearfix {
-    @include clearfix();
+  @include clearfix();
 }
 
-// Columns for layout
-.columns {
-    display: flex;
-    flex-direction: row;
-
-    flex-wrap: nowrap;
-    justify-content: space-between;
-    align-items: stretch;
-    align-content: stretch;
-}
-
-.column {
-    order: 0;
-    flex: 1 0 auto;
-    align-self: stretch;
+.container {
+  width: 100%;
+  max-width: 540px;
+  margin: 0 auto;
 }

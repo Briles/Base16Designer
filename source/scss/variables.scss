@@ -23,12 +23,12 @@ $--border: 1px solid $--border-color;
 
 // scheme > swatches
 $swatches-per-row: 8;
-$swatch-height: 48px;
+$swatch-height: 60px;
 $swatch-width: 48px;
 $swatch-margin: 12px;
 $swatch-padding-bottom: 24px;
 $swatches-width: $swatches-per-row * $swatch-width + ($swatches-per-row - 1) * $swatch-margin;
 
 // tabs > li
-$tab-margin: 10px;
-$tab-width: ($swatches-width - $tab-margin) / 2;
+$tab-margin: 0;
+$tab-width: 50%;

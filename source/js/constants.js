@@ -1,12 +1,5 @@
 exports.BASE16_SCHEMES = require('../json/base16_schemes.json');
 
-exports.COLOR_MAP = {
-  base04: 'base00',
-  base05: 'base00',
-  base06: 'base00',
-  base07: 'base00',
-};
-
 exports.COMMENT_MAP = {
   base00: ' #  ----',
   base01: ' #  ---',

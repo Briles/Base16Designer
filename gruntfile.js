@@ -1,28 +1,9 @@
 'use strict';
 
-var hexValues = [
-  '00',
-  '01',
-  '02',
-  '03',
-  '04',
-  '05',
-  '06',
-  '07',
-  '08',
-  '09',
-  '0A',
-  '0B',
-  '0C',
-  '0D',
-  '0E',
-  '0F',
-];
-
 var srcPath = 'source/';
 
 const uglifyJSFiles = {
-  'main.min.js': ['node_modules/ngclipboard/dist/ngclipboard.min.js', 'main.min.js'],
+  'main.min.js': ['main.min.js'],
 };
 
 const jadeFiles = [{
@@ -120,7 +101,6 @@ module.exports = function (grunt) {
         options: {
           data: {
             release: false,
-            hexcodes: hexValues,
           },
         },
         files: jadeFiles,
@@ -129,7 +109,6 @@ module.exports = function (grunt) {
         options: {
           data: {
             release: true,
-            hexcodes: hexValues,
           },
         },
         files: jadeFiles,

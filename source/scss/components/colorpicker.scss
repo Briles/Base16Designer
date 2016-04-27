@@ -1,96 +1,64 @@
 .colorpicker-wrapper {
-    position: absolute;
-    z-index: 10001;
-    top: 0;
-    left: 560px;
+  display: block;
 
-    display: block;
-
-    width: 100%;
-    max-width: 320px;
+  width: 100%;
+  padding-bottom: $swatch-padding-bottom;
 }
 
 .colorpicker {
-    font-family: $--font-stack-monospace;
+  font-family: $--font-stack-monospace;
 
-    position: relative;
+  position: relative;
 
-    padding: 20px;
+  padding: 20px;
 
-    background-color: $white;
-    box-shadow: 0 1px 2px 1px hsla(0, 0%, 0%, .09);
+  background-color: $white;
+  box-shadow: 0 1px 2px 1px hsla(0, 0%, 0%, .09);
 }
 
 .colorpicker-head {
-    font-weight: bold;
+  font-weight: bold;
 
-    position: relative;
+  position: relative;
 
-    padding: 0 80px 20px 5px;
+  display: block;
 
-    text-transform: uppercase;
-}
+  padding: 0 80px 10px 5px;
 
-.colorpicker-swatch {
-    display: block;
-
-    width: 100%;
-    height: 24px;
-
-    text-align: center;
+  text-transform: uppercase;
 }
 
 .colorpicker-close {
-    position: absolute;
-    top: 0;
-    right: 0;
+  position: absolute;
+  top: 0;
+  right: 0;
 
-    cursor: pointer;
+  cursor: pointer;
 }
 
 .colorpicker-fieldset {
-    display: table;
+  display: table;
 
-    width: 100%;
-    margin-bottom: 15px;
-    padding-bottom: 6px;
-    &:last-of-type {
-        margin-bottom: 0;
-    }
+  width: 100%;
+  padding-top: 6px;
 }
 
 .colorpicker-field {
-    display: table-cell;
+  display: table-cell;
 
-    padding: 0 5px;
+  text-align: center;
+  vertical-align: top;
+  input {
+    font-size: 14px;
+    line-height: 30px;
+
+    display: block;
+
+    width: 100%;
 
     text-align: center;
-    vertical-align: top;
-    label {
-        font-size: 12px;
-    }
-    input {
-        font-size: 14px;
-        line-height: 30px;
 
-        display: block;
-
-        width: 100%;
-
-        text-align: center;
-        text-transform: uppercase;
-
-        border: $--border;
-        outline: none;
-
-        -moz-appearance: textfield;
-        &::-webkit-inner-spin-button, &::-webkit-outer-spin-button {
-            margin: 0;
-
-            -webkit-appearance: none;
-        }
-        &.ng-invalid {
-            color: #f00;
-        }
-    }
+    border: $--border;
+    outline: none;
+  }
 }
